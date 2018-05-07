@@ -16,15 +16,14 @@ defmodule PragmaticBookshelf do
     Enum.map(@orders, &apply_tax/1)
   end
 
-  def apply_tax(order) do
+  defp apply_tax(order) do
     rate_per_state = find_rate(order[:ship_to])
     total_amount = order[:net_amount] + rate_per_state
     order ++ [total_amount: total_amount]
   end
 
-  def find_rate(_value = :NC), do: @tax_rates[:NC]
-  def find_rate(_value = :TX), do: @tax_rates[:TX]
-  def find_rate(_value = _), do: 0.0
-
+  defp find_rate(_value = :NC), do: @tax_rates[:NC]
+  defp find_rate(_value = :TX), do: @tax_rates[:TX]
+  defp find_rate(_value = _), do: 0.0
 
 end
