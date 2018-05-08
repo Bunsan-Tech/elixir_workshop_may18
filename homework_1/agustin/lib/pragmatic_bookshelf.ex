@@ -1,3 +1,2 @@
 defmodule PragmaticBookshelf do
-
 end
