@@ -1,0 +1,9 @@
+{application,hugo,
+             [{applications,[kernel,stdlib,elixir,logger]},
+              {description,"hugo"},
+              {modules,['Elixir.Enumerable.BitString','Elixir.Hugo',
+                        'Elixir.InfinitePrimes','Elixir.ListComprehensions',
+                        'Elixir.Polymorphism']},
+              {registered,[]},
+              {vsn,"0.1.0"},
+              {extra_applications,[logger]}]}.
