@@ -1,6 +1,6 @@
 defmodule TicTacToe.Game do
   use GenServer
-  alias TicTacToe.{Board, Rules, Winner}
+  alias TicTacToe.{Board, Display, Rules, Winner}
 
   def start_link(name) do
     GenServer.start_link(__MODULE__, [], name: via_tuple(name))
@@ -40,6 +40,9 @@ defmodule TicTacToe.Game do
     {:reply, message, game_state}
   end
 
+  defp reply_success(game_state, status) do
+    {:reply, {status, game_state}, game_state}
+  end
 
   def assign_winner(game_state, new_board) do
     case Winner.win?(new_board) do
@@ -52,10 +55,6 @@ defmodule TicTacToe.Game do
     game_state
     |> Map.put(:turn, next_turn)
     |> Map.put(:board, new_board)
-  end
-
-  defp reply_success(game_state, status) do
-    {:reply, {status, game_state}, game_state}
   end
 
   defp mark_board_for(game_state, player, position) do
