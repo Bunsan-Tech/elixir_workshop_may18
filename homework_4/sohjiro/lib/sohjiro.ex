@@ -5,7 +5,8 @@ defmodule Sohjiro do
 
   def start(_type, _args) do
     children = [
-      { Registry, keys: :unique, name: Registry.TicTacToe }
+      { Registry, keys: :unique, name: Registry.TicTacToe },
+			TicTacToe.GameSupervisor
     ]
 
     opts = [strategy: :one_for_one]
