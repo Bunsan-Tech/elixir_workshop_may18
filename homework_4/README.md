@@ -9,4 +9,4 @@ Based on Problem 1, create an application and the corresponding supervision tree
 such that you can create new games, and each game is handled by a new process.
 The game processes must be supervised, every game should have an unique ID, which
 must be provided from the start, and if the server crashes, the replacement should
-be addressed by the same ID. 
+be addressed by the same ID.
