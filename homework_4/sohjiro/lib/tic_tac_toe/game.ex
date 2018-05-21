@@ -33,7 +33,7 @@ defmodule TicTacToe.Game do
   end
 
   def handle_response({:error, :game_over}, game_state) do
-    {:stop, :normal, {:ok, game_state}, game_state}
+    {:stop, :normal, {:ok, "Game over"}, game_state}
   end
 
   def handle_response(message, game_state) do
@@ -41,7 +41,13 @@ defmodule TicTacToe.Game do
   end
 
   defp reply_success(game_state, status) do
-    {:reply, {status, game_state}, game_state}
+    Display.print_board(game_state)
+    message =
+      case is_nil(game_state.winner) do
+        true -> "Game is on!"
+        false -> "Game over"
+      end
+    {:reply, {status, message}, game_state}
   end
 
   def assign_winner(game_state, new_board) do
