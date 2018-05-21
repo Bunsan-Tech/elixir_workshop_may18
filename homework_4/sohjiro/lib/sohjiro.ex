@@ -1,15 +1,15 @@
 defmodule Sohjiro do
-	@moduledoc false
+  @moduledoc false
 
-	use Application
+  use Application
 
-	def start(_type, _args) do
-		children = [
-			{ Registry, keys: :unique, name: Registry.TicTacToe },
-			TicTacToe.GameSupervisor
-		]
+  def start(_type, _args) do
+    children = [
+      { Registry, keys: :unique, name: Registry.TicTacToe },
+      TicTacToe.GameSupervisor
+    ]
 
-		opts = [strategy: :one_for_one]
-		Supervisor.start_link(children, opts)
-	end
+    opts = [strategy: :one_for_one]
+    Supervisor.start_link(children, opts)
+  end
 end
