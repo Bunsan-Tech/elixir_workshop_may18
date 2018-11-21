@@ -1,3 +1,2 @@
 defmodule Zurg do
-
 end
